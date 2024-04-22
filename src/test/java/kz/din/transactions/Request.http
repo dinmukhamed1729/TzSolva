@@ -1,0 +1,39 @@
+
+###
+GET https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=RUB&to_currency=KZT&apikey=6XB5GC3K70QC67ZG
+###
+GET http://localhost:8080/transactions?bank=0000000001
+
+###
+POST http://localhost:8080/user/setLimit
+Content-Type: application/json
+
+{
+  "bankAccount": "0000000001",
+  "limitSum":300,
+  "limitCurrencyShortname": "USD"
+}
+
+###
+POST http://localhost:8080/user/createNewUser
+Content-Type: application/json
+
+{
+  "name": "YourName",
+  "currencyShortName": "USD"
+
+}
+
+###
+POST http://localhost:8080/transactions
+Content-Type: application/json
+
+{
+  "accountFrom": "0000000001",
+  "accountTo": "0000000001",
+  "currencyShortname": "USD",
+  "expenseCategory": "SERVICE",
+  "transactionAmount": 100
+}
+###
+GET http://localhost:8080/transactions/getExchangeRate
